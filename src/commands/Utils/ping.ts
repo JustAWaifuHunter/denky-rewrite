@@ -1,5 +1,4 @@
-import { CommandStructure } from '../../utils/baseCommand';
-import type { CommandInteraction } from 'discord.js';
+import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
 
 export default class PingCommand extends CommandStructure {
 	constructor() {
@@ -13,7 +12,7 @@ export default class PingCommand extends CommandStructure {
 		};
 	}
 
-	public run(interaction: CommandInteraction): any {
-		interaction.editReply('Pong!');
+	public run({ interaction, t }: CommandRunData): any {
+		interaction.editReply(t('TEST'));
 	}
 }

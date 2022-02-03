@@ -1,4 +1,4 @@
-import { Client, Intents } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 import env from 'dotenv';
 import type { DenkyClient } from './index.d';
 import { Initializer } from './utils/initializer';
@@ -6,13 +6,15 @@ import { Initializer } from './utils/initializer';
 env.config({ path: '../.env' });
 
 const client: DenkyClient = new Client({
-	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS],
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers],
 	failIfNotExists: false,
 	allowedMentions: {
 		repliedUser: true,
 		parse: ['users'],
 	},
-	retryLimit: 2,
+	rest: {
+		retries: 3,
+	},
 });
 
 global.client = client;
