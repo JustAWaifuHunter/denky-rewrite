@@ -1,4 +1,9 @@
-import type { CommandInteraction } from 'discord.js';
+import type { PermissionResolvable, CommandInteraction } from 'discord.js';
+
+export interface CommandPermissions {
+	bot: PermissionResolvable[];
+	user: PermissionResolvable[];
+}
 
 export interface CommandConfiguration {
 	autoDefer?: boolean;
@@ -12,14 +17,21 @@ export interface CommandRunData {
 
 export class CommandStructure {
 	name: string;
-	desc: string;
+	category: string;
+	description: string;
 	config: CommandConfiguration;
+	perms: CommandPermissions;
 	constructor() {
 		this.name = '';
-		this.desc = '';
+		this.category = '';
+		this.description = '';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
+		};
+		this.perms = {
+			bot: [],
+			user: [],
 		};
 	}
 }

@@ -5,10 +5,15 @@ export default class PingCommand extends CommandStructure {
 		super();
 
 		this.name = 'ping';
-		this.desc = 'CATEGORIES_UTILS';
+		this.category = 'CATEGORIES_UTILS';
+		this.description = 'CATEGORIES_UTILS';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
+		};
+		this.perms = {
+			bot: [],
+			user: [],
 		};
 	}
 
