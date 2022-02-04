@@ -1,11 +1,10 @@
-import { data as data_pt_BR } from '../languages/pt_BR';
-import { data as data_en_US } from '../languages/en_US';
+import { data as data_pt_BR } from '../../languages/descriptions/pt_BR';
+import { data as data_en_US } from '../../languages/descriptions/en_US';
 
-export default class LanguageModule {
+export default class DescriptionLanguages {
 	pt_BR: typeof data_pt_BR;
 	en_US: typeof data_en_US;
 	constructor() {
-		client.languages = this;
 		this.init();
 	}
 

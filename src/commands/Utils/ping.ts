@@ -5,8 +5,6 @@ export default class PingCommand extends CommandStructure {
 		super();
 
 		this.name = 'ping';
-		this.category = 'CATEGORIES_UTILS';
-		this.description = 'CATEGORIES_UTILS';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
@@ -17,10 +15,13 @@ export default class PingCommand extends CommandStructure {
 		};
 	}
 
-	public async run({ interaction, t }: CommandRunData) {
-		const start = Date.now();
-		await interaction.editReply('🤔');
-		const apiPing = Date.now() - start;
-		interaction.editReply(`${t('UTILS_PING', interaction.user, Math.round(client.ws.ping), apiPing)}`);
+	public run({ interaction, t }: CommandRunData) {
+		const teste = interaction.locale.replace('-', '_');
+		console.log(teste, client.languages?.descriptions.t('PING', teste));
+		interaction.editReply(client.languages?.descriptions.t('PING', teste));
+		// Const start = Date.now();
+		// await interaction.editReply('🤔');
+		// const apiPing = Date.now() - start;
+		// interaction.editReply(`${t('UTILS_PING', interaction.user, Math.round(client.ws.ping), apiPing)}`);
 	}
 }

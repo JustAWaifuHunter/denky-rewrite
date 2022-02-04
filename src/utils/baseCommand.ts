@@ -17,14 +17,10 @@ export interface CommandRunData {
 
 export class CommandStructure {
 	name: string;
-	category: string;
-	description: string;
 	config: CommandConfiguration;
 	perms: CommandPermissions;
 	constructor() {
 		this.name = '';
-		this.category = '';
-		this.description = '';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
