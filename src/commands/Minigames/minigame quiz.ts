@@ -70,6 +70,14 @@ export default class MinigameCommand extends CommandStructure {
 			}
 			collected.followUp({ content: `❌ ${interaction.user} **|** ${t('QUIZ_WRONG_ANSWER')}`, ephemeral: true });
 		});
+
+		collector.on('end', collected => {
+			if (collected.size === 0) {
+				const wrongRow = this._generateButtons(randomQuestion.answers, new ActionRow(), ButtonStyle.Secondary, true);
+				embed.setDescription(`⚠️ ${t('QUIZ_NO_ANSWER')}\n🎖️ **${t('QUIZ_POINTS')}**: ${points}`);
+				interaction.editReply({ components: [wrongRow], embeds: [embed] });
+			}
+		});
 	}
 
 	_getRandomQuestion(category: ValidCategories): QuestionStrucutre {

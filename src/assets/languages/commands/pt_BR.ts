@@ -6,6 +6,7 @@ const data = {
 	QUIZ_RIGHT_ANSWER: 'Resposta correta!',
 	QUIZ_WRONG_ANSWER: 'Resposta errada!',
 	QUIZ_IMG_CREDIT: 'Crédito da imagem',
+	QUIZ_NO_ANSWER: 'Você demorou para responder!',
 };
 
 export { data };
