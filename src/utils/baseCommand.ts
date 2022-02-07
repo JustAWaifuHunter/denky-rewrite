@@ -1,4 +1,5 @@
 import type { PermissionResolvable, ChatInputCommandInteraction } from 'discord.js';
+import type { Commands } from '../modules/languages/Languages';
 
 export interface CommandPermissions {
 	bot: PermissionResolvable[];
@@ -13,7 +14,7 @@ export interface CommandConfiguration {
 
 export interface CommandRunData {
 	interaction: ChatInputCommandInteraction;
-	t: (key: string, ...args: any) => string;
+	t: (key: keyof Commands, ...args: unknown[]) => string;
 }
 
 export class CommandStructure {
