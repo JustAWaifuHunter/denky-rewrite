@@ -29,7 +29,7 @@ export default class Languages<D extends string, L extends object> {
     	}
 
     	return res || `!{${lang}.${string}}!`;
-    }
+	}
 }
 
 import type { data as descriptions_pt_BR } from '../../assets/languages/descriptions/pt_BR';
