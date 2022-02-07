@@ -89,7 +89,7 @@ export default class MinigameCommand extends CommandStructure {
 		case 'technology':
 			return TechData.questions[Math.floor(Math.random() * TechData.questions.length)];
 		case 'random':
-			return this._getRandomQuestion(categories.filter(t => t !== 'random')[Math.floor(Math.random() * categories.length - 1)]);
+			return this._getRandomQuestion(categories.filter(t => t !== 'random')[Math.floor(Math.random() * (categories.length - 1))]);
 		}
 	}
 
