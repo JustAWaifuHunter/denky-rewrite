@@ -8,7 +8,7 @@ export interface CommandPermissions {
 export interface CommandConfiguration {
 	autoDefer?: boolean;
 	ephemeral?: boolean;
-	showInHelp?: true;
+	showInHelp?: boolean;
 }
 
 export interface CommandRunData {

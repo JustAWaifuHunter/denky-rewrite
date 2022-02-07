@@ -1,0 +1,94 @@
+{
+    "questions": [
+        {
+            "title": "Quais são os planetas externos do nosso sistema solar?",
+            "answers": [
+                {
+                    "name": "Netuno, Urano, Plutão e Éris"
+                },
+                {
+                    "name": "Júpiter e Saturno"
+                },
+                {
+                    "name": "Júpiter, Saturno, Urano e Netuno",
+                    "correct": true
+                },
+                {
+                    "name": "Terra, Marte e Júpiter"
+                }
+            ]
+        },
+        {
+            "title": "Quais planetas possuem anéis?",
+            "answers": [
+                {
+                    "name": "Apenas Saturno",
+                    "correct": true
+                },
+                {
+                    "name": "Saturno e Júpiter"
+                },
+                {
+                    "name": "Urano e Netuno"
+                },
+                {
+                    "name": "Marte e Júpiter"
+                }
+            ]
+        },
+        {
+            "title": "Quais são os planetas internos?",
+            "answers": [
+                {
+                    "name": "Vênus, Terra e Marte"
+                },
+                {
+                    "name": "Céres e Mercúrio"
+                },
+                {
+                    "name": "Mercúrio, Vênus, Terra e Marte",
+                    "correct": true
+                },
+                {
+                    "name": "Júpiter, Marte e Terra"
+                }
+            ]
+        },
+        {
+            "title": "Em termos de hidrografia e relevo, qual é o planeta mais parecido com o nosso?",
+            "answers": [
+                {
+                    "name": "Marte"
+                },
+                {
+                    "name": "Lua",
+                    "correct": true
+                },
+                {
+                    "name": "Vênus"
+                },
+                {
+                    "name": "Mercurio"
+                }
+            ]
+        },
+        {
+            "title": "Em termos de estrutura e tamanho, qual o planeta ou satélte natural mais parecido com a Terra?",
+            "answers": [
+                {
+                    "name": "Marte"
+                },
+                {
+                    "name": "Europa"
+                },
+                {
+                    "name": "Lua",
+                    "correct": true
+                },
+                {
+                    "name": "Tritão"
+                }
+            ]
+        }
+    ]
+}

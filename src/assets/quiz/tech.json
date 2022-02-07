@@ -1,0 +1,184 @@
+{
+    "questions": [
+        {
+            "title": "Qual o maior buscador do mundo?",
+            "answers": [
+                {
+                    "name": "DuckDuckGo"
+                },
+                {
+                    "name": "Bing"
+                },
+                {
+                    "name": "Google",
+                    "correct": true
+                },
+                {
+                    "name": "Yandex"
+                }
+            ]
+        },
+        {
+            "title": "Qual a empresa dona da Wikipedia?",
+            "answers": [
+                {
+                    "name": "Wikimedia Foundation",
+                    "correct": true
+                },
+                {
+                    "name": "Freewiki Foundation"
+                },
+                {
+                    "name": "Gratiswiki Foundation"
+                },
+                {
+                    "name": "Wikihow Foundation"
+                }
+            ]
+        },
+        {
+            "title": "O que é TypeScript?",
+            "answers": [
+                {
+                    "name": "Marca de roupas"
+                },
+                {
+                    "name": "Modelo de carro"
+                },
+                {
+                    "name": "Jogo de computador"
+                },
+                {
+                    "name": "Linguagem de programação",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "title": "Qual sistema operacional é considerado livre, leve e perfeito para programadores?",
+            "answers": [
+                {
+                    "name": "Windows"
+                },
+                {
+                    "name": "Linux",
+                    "correct": true
+                },
+                {
+                    "name": "MacOS"
+                },
+                {
+                    "name": "Android"
+                }
+            ]
+        },
+        {
+            "title": "Qual linguagem de programação é considerada fácil para iniciantes?",
+            "answers": [
+                {
+                    "name": "Java"
+                },
+                {
+                    "name": "JavaScript"
+                },
+                {
+                    "name": "Python",
+                    "correct": true
+                },
+                {
+                    "name": "Assembly"
+                }
+            ]
+        },
+        {
+            "title": "Quem fundou a Microsoft?",
+            "answers": [
+                {
+                    "name": "Larry Page e Sergey Brin"
+                },
+                {
+                    "name": "Kim Dotcom e Mark Zuckerberg"
+                },
+                {
+                    "name": "Bill Gates e Paul Allen",
+                    "correct": true
+                },
+                {
+                    "name": "Sergey Brin e Satya Nadella"
+                }
+            ]
+        },
+        {
+            "title": "Qual empresa desenvolve o Windows?",
+            "answers": [
+                {
+                    "name": "Microsoft",
+                    "correct": true
+                },
+                {
+                    "name": "Google"
+                },
+                {
+                    "name": "Apple"
+                },
+                {
+                    "name": "Samsung"
+                }
+            ]
+        },
+        {
+            "title": "Onde fica a sede da Meta?",
+            "answers": [
+                {
+                    "name": "Honk Kong"
+                },
+                {
+                    "name": "Moscou"
+                },
+                {
+                    "name": "São Paulo"
+                },
+                {
+                    "name": "California",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "title": "Qual o antigo nome da Meta?",
+            "answers": [
+                {
+                    "name": "Orkut"
+                },
+                {
+                    "name": "Reels"
+                },
+                {
+                    "name": "Facebook",
+                    "correct": true
+                },
+                {
+                    "name": "Vimeo"
+                }
+            ]
+        },
+        {
+            "title": "Qual foi a primeira criptomoeda descentralizada criada?",
+            "answers": [
+                {
+                    "name": "Etherum"
+                },
+                {
+                    "name": "Bitcoin",
+                    "correct": true
+                },
+                {
+                    "name": "NFTs"
+                },
+                {
+                    "name": "Dogecoin"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "questions": [
+        {
+            "title": "Quem descobriu o Brasil?",
+            "answers": [
+                {
+                    "name": "Luciano Ferreira Patricio"
+                },
+                {
+                    "name": "Pedro Alvares Cabral",
+                    "correct": true
+                },
+                {
+                    "name": "André Lucas Almeida"
+                },
+                {
+                    "name": "André Moreira Cabral"
+                }
+            ]
+        },
+        {
+            "title": "Qual o idioma mais falado no mundo?",
+            "answers": [
+                {
+                    "name": "Inglês",
+                    "correct": true
+                },
+                {
+                    "name": "Espanhol"
+                },
+                {
+                    "name": "Grego"
+                },
+                {
+                    "name": "Português"
+                }
+            ]
+        },
+        {
+            "title": "Em que ano foi proclamada a República do Brasil e qual foi o primeiro presidente?",
+            "answers": [
+                {
+                    "name": "1776, George Washington"
+                },
+                {
+                    "name": "1822, Dom Pedro I",
+                    "correct": true
+                },
+                {
+                    "name": "1840, Dom Pedro II"
+                },
+                {
+                    "name": "1889, Marechal Deodoro da Fonseca"
+                }
+            ]
+        },
+        {
+            "title": "Qual presidente implantou a política do café com leite, que alternava na presidência um paulista e um mineiro?",
+            "answers": [
+                {
+                    "name": "Campos Sales",
+                    "correct": true
+                },
+                {
+                    "name": "Nilo Peçanha"
+                },
+                {
+                    "name": "Venceslau Brás"
+                },
+                {
+                    "name": "Washington Luís"
+                }
+            ]
+        }
+    ]
+}
