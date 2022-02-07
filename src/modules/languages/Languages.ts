@@ -2,7 +2,7 @@ type ResponseType = string | ((...options: unknown[]) => string)
 
 const defaultSymbol = Symbol('default');
 
-export default class Languages<D extends string, L extends object> {
+export default class Languages<D extends string, L> {
 	[x: string]: any;
 	[defaultSymbol]: D;
 
