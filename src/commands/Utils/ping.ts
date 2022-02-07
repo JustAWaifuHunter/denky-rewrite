@@ -5,6 +5,7 @@ export default class PingCommand extends CommandStructure {
 		super();
 
 		this.name = 'ping';
+		this.category = 'UTILS';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,

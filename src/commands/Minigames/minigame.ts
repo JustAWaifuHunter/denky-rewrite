@@ -5,6 +5,7 @@ export default class MinigameCommand extends CommandStructure {
 		super();
 
 		this.name = 'minigame';
+		this.category = 'MINIGAMES';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,

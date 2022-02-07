@@ -18,10 +18,12 @@ export interface CommandRunData {
 
 export class CommandStructure {
 	name: string;
+	category: string;
 	config: Partial<CommandConfiguration>;
 	perms: CommandPermissions;
 	constructor() {
 		this.name = '';
+		this.category = '';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
