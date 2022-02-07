@@ -51,6 +51,7 @@ class Initializer {
 			try {
 				new BaseModule();
 			} catch {
+				// eslint-disable-next-line new-cap
 				BaseModule();
 			}
 			console.log(`[DENKY] Loaded module: ${name}`);
