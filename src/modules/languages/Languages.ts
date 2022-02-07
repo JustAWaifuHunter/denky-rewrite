@@ -3,28 +3,26 @@ type ResponseType = string | ((...options: unknown[]) => string)
 const defaultSymbol = Symbol('default');
 
 export default class Languages<D extends string, L extends object> {
-    [x: string]: any;
-    [defaultSymbol]: D;
+	[x: string]: any;
+	[defaultSymbol]: D;
 
-    constructor(data?: [string, L][], defaultLang?: D) {
-    	if (data && defaultLang) {
-    		this.init(data, defaultLang);
-    	}
-    }
+	constructor(data?: [string, L][], defaultLang?: D) {
+		if (data && defaultLang) this.init(data, defaultLang);
+	}
 
-    init(data: [string, L][], defaultLang: D): this {
-    	for (const d of data) {
-    		this[d[0]] = d[1];
-    	}
+	init(data: [string, L][], defaultLang: D): this {
+		for (const d of data) {
+			this[d[0]] = d[1];
+		}
 
-    	this[defaultSymbol] = defaultLang;
+		this[defaultSymbol] = defaultLang;
 
-    	return this;
-    }
+		return this;
+	}
 
-    t(string: string, lang: string, ...args: any): string {
-    	let res: ResponseType = '';
-    	res = this[lang][string] || this[defaultSymbol][string];
+	t(string: string, lang: string, ...args: any): string {
+		let res: ResponseType = '';
+		res = this[lang][string] || this[defaultSymbol][string];
 
     	if (typeof res === 'function') {
     		return res(...args) || `!{${lang}.${string}}!`;

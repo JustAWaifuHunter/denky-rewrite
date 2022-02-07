@@ -10,7 +10,7 @@ import Languages from './languages/Languages';
 interface LangExtender <T> {
 	pt_BR: T;
 	en_US: T;
-	t: (string: keyof T, lang: 'pt_BR' | 'en_US', ...args: Array<string>) => string;
+	t: (string: keyof T, lang: 'pt_BR' | 'en_US', ...args: string[]) => string;
 }
 
 type Commands = typeof commands_pt_BR & typeof commands_en_US;
