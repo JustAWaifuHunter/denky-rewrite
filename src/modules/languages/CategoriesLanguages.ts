@@ -1,6 +1,8 @@
 import { data as data_pt_BR } from '../../assets/languages/categories/pt_BR';
 import { data as data_en_US } from '../../assets/languages/categories/en_US';
 
+type ResponseType = string | ((...options: any) => string)
+
 export default class CategoriesLanguages {
 	pt_BR: typeof data_pt_BR;
 	en_US: typeof data_en_US;
@@ -14,7 +16,7 @@ export default class CategoriesLanguages {
 	}
 
 	t(string: string, lang: string, ...args: any): string {
-		let res: string | Function = '';
+		let res: ResponseType = '';
 		switch (lang) {
 		case 'pt_BR':
 			res = data_pt_BR[string];
