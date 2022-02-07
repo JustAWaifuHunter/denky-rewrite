@@ -1,8 +1,9 @@
-import type { CommandInteraction } from 'discord.js';
+import type { Interaction } from 'discord.js';
+import type { CommandRunData } from '../utils/baseCommand';
 
 export default class InteractionCreateEvent extends null {
-	public static async run(interaction: CommandInteraction) {
-		if (!interaction.isCommand()) return;
+	public static async run(interaction: Interaction) {
+		if (!interaction.isChatInputCommand()) return;
 
 		const command = client.commands.get(interaction.commandName);
 
@@ -13,6 +14,6 @@ export default class InteractionCreateEvent extends null {
 			return client.languages.commands.t(key, interaction.locale.replace('-', '_'), ...args);
 		};
 
-		command.run({ interaction, t: translate });
+		command.run({ interaction, t: translate } as CommandRunData);
 	}
 }
