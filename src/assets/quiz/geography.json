@@ -2,6 +2,8 @@
     "questions": [
         {
             "title": "Quem descobriu o Brasil?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Brazil_%28orthographic_projection%29.svg/640px-Brazil_%28orthographic_projection%29.svg.png",
+            "image_credit": "Wikimedia Commons",
             "answers": [
                 {
                     "name": "Luciano Ferreira Patricio"
@@ -20,6 +22,8 @@
         },
         {
             "title": "Qual o idioma mais falado no mundo?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Rajagopal_speaking_to_25%2C000_people%2C_Janadesh_2007%2C_India.jpg/640px-Rajagopal_speaking_to_25%2C000_people%2C_Janadesh_2007%2C_India.jpg",
+            "image_credit": "Wikimedia Commons",
             "answers": [
                 {
                     "name": "Inglês",
@@ -38,6 +42,8 @@
         },
         {
             "title": "Em que ano foi proclamada a República do Brasil e qual foi o primeiro presidente?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Museu_do_Ipiranga_%284267042013%29.jpg/640px-Museu_do_Ipiranga_%284267042013%29.jpg",
+            "image_credit": "Wikimedia Commons",
             "answers": [
                 {
                     "name": "1776, George Washington"
