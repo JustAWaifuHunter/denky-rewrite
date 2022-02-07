@@ -1,6 +1,11 @@
 import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord.js';
 
+// Quiz data
+import AstronomyData from '../../assets/quiz/astronomy.json';
+import GeographyData from '../../assets/quiz/geography.json';
+import TechData from '../../assets/quiz/tech.json';
+
 type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
 const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
 
@@ -13,11 +18,6 @@ interface QuestionStrucutre {
     title: string;
     answers: AnswersStructure[];
 }
-
-// Quiz data
-import AstronomyData from '../../assets/quiz/astronomy.json';
-import GeographyData from '../../assets/quiz/geography.json';
-import TechData from '../../assets/quiz/tech.json';
 
 export default class MinigameCommand extends CommandStructure {
 	constructor() {
@@ -34,12 +34,12 @@ export default class MinigameCommand extends CommandStructure {
 		};
 	}
 
-	public async run({ interaction }: CommandRunData, points = 0) {
+	public async run({ interaction, t }: CommandRunData, points = 0) {
 		const category: ValidCategories = interaction.options.getString('category') as ValidCategories ?? 'random';
 		const randomQuestion = this._getRandomQuestion(category);
 
 		const row = this._generateButtons(randomQuestion.answers, new ActionRow());
-		const embed = new Embed().setTitle(randomQuestion.title).setDescription(`🎖️ **Pontos**: ${points}`).setTimestamp();
+		const embed = new Embed().setTitle(randomQuestion.title).setDescription(`🎖️ **${t('QUIZ_POINTS')}**: ${points}`).setTimestamp();
 
 		const message = await interaction.editReply({ components: [row], embeds: [embed] }) as Message;
 		const collector = message.createMessageComponentCollector({
@@ -57,7 +57,7 @@ export default class MinigameCommand extends CommandStructure {
 			const answer = randomQuestion.answers[Number(collected.customId)];
 
 			if (answer.correct) {
-				return collected.followUp({ content: `✅ ${interaction.user} **|** Resposta correta!` }).then(r => {
+				return collected.followUp({ content: `✅ ${interaction.user} **|** ${t('QUIZ_RIGHT_ANSWER')}` }).then(r => {
 					setTimeout(() => {
 						// eslint-disable-next-line no-empty-function
 						(r as Message).delete().catch(() => {});
@@ -65,7 +65,7 @@ export default class MinigameCommand extends CommandStructure {
 					}, 2000).unref();
 				});
 			}
-			collected.followUp({ content: `❌ ${interaction.user} **|** Resposta incorreta!`, ephemeral: true });
+			collected.followUp({ content: `❌ ${interaction.user} **|** ${t('QUIZ_WRONG_ANSWER')}`, ephemeral: true });
 		});
 	}
 
