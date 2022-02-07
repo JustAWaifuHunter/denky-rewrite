@@ -30,5 +30,6 @@ export interface DenkyClient extends Client {
 }
 
 declare global {
-	let client: DenkyClient;
+	// eslint-disable-next-line no-var
+	var client: DenkyClient;
 }
