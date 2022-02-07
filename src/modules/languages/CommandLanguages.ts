@@ -1,5 +1,5 @@
-import { data as data_pt_BR } from '../../languages/commands/pt_BR';
-import { data as data_en_US } from '../../languages/commands/en_US';
+import { data as data_pt_BR } from '../../assets/languages/commands/pt_BR';
+import { data as data_en_US } from '../../assets/languages/commands/en_US';
 
 export default class CommandLanguages {
 	pt_BR: typeof data_pt_BR;
