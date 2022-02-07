@@ -5,6 +5,7 @@ const data = {
 	QUIZ_POINTS: 'Pontos',
 	QUIZ_RIGHT_ANSWER: 'Resposta correta!',
 	QUIZ_WRONG_ANSWER: 'Resposta errada!',
+	QUIZ_IMG_CREDIT: 'Crédito da imagem',
 };
 
 export { data };

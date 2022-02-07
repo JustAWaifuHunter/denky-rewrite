@@ -16,6 +16,8 @@ interface AnswersStructure {
 
 interface QuestionStrucutre {
     title: string;
+	image?: string;
+	image_credit?: string;
     answers: AnswersStructure[];
 }
 
@@ -39,7 +41,8 @@ export default class MinigameCommand extends CommandStructure {
 		const randomQuestion = this._getRandomQuestion(category);
 
 		const row = this._generateButtons(randomQuestion.answers, new ActionRow());
-		const embed = new Embed().setTitle(randomQuestion.title).setDescription(`🎖️ **${t('QUIZ_POINTS')}**: ${points}`).setTimestamp();
+		const embed = new Embed().setTitle(randomQuestion.title).setDescription(`🎖️ **${t('QUIZ_POINTS')}**: ${points}`).setTimestamp()
+			.setImage(randomQuestion.image ?? null).setFooter(randomQuestion.image_credit ? { text: `${t('QUIZ_IMG_CREDIT')}: ${randomQuestion.image_credit}`} : null );
 
 		const message = await interaction.editReply({ components: [row], embeds: [embed] }) as Message;
 		const collector = message.createMessageComponentCollector({
@@ -61,7 +64,7 @@ export default class MinigameCommand extends CommandStructure {
 					setTimeout(() => {
 						// eslint-disable-next-line no-empty-function
 						(r as Message).delete().catch(() => {});
-						client.commands?.get('minigame quiz')?.run({ interaction }, ++points);
+						client.commands?.get('minigame quiz')?.run({ interaction, t }, ++points);
 					}, 2000).unref();
 				});
 			}
@@ -78,7 +81,7 @@ export default class MinigameCommand extends CommandStructure {
 		case 'technology':
 			return TechData.questions[Math.floor(Math.random() * TechData.questions.length)];
 		case 'random':
-			return this._getRandomQuestion(categories.filter(t => t !== 'random')[Math.floor(Math.random() * categories.length)]);
+			return this._getRandomQuestion(categories.filter(t => t !== 'random')[Math.floor(Math.random() * categories.length - 1)]);
 		}
 	}
 
