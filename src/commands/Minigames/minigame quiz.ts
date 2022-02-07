@@ -1,7 +1,8 @@
 import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord.js';
 
-type ValidCategories = 'technology' | 'astronomy' | 'geography';
+type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
+const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
 
 interface AnswersStructure {
     name: string;
@@ -34,7 +35,7 @@ export default class MinigameCommand extends CommandStructure {
 	}
 
 	public async run({ interaction }: CommandRunData, points = 0) {
-		const category: ValidCategories = interaction.options.getString('category') as ValidCategories ?? 'technology';
+		const category: ValidCategories = interaction.options.getString('category') as ValidCategories ?? 'random';
 		const randomQuestion = this._getRandomQuestion(category);
 
 		const row = this._generateButtons(randomQuestion.answers, new ActionRow());
@@ -76,6 +77,8 @@ export default class MinigameCommand extends CommandStructure {
 			return GeographyData.questions[Math.floor(Math.random() * GeographyData.questions.length)];
 		case 'technology':
 			return TechData.questions[Math.floor(Math.random() * TechData.questions.length)];
+		case 'random':
+			return this._getRandomQuestion(categories.filter(t => t !== 'random')[Math.floor(Math.random() * categories.length)]);
 		}
 	}
 
