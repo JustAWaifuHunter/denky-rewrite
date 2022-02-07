@@ -8,6 +8,7 @@ export interface CommandPermissions {
 export interface CommandConfiguration {
 	autoDefer?: boolean;
 	ephemeral?: boolean;
+	showInHelp?: true;
 }
 
 export interface CommandRunData {
@@ -17,13 +18,14 @@ export interface CommandRunData {
 
 export class CommandStructure {
 	name: string;
-	config: CommandConfiguration;
+	config: Partial<CommandConfiguration>;
 	perms: CommandPermissions;
 	constructor() {
 		this.name = '';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
+			showInHelp: true,
 		};
 		this.perms = {
 			bot: [],
