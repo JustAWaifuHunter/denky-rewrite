@@ -1,14 +1,14 @@
 import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
 
-export default class PingCommand extends CommandStructure {
+export default class MinigameCommand extends CommandStructure {
 	constructor() {
 		super();
 
-		this.name = 'ping';
+		this.name = 'minigame';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
-            showInHelp: false,
+			showInHelp: false,
 		};
 		this.perms = {
 			bot: [],
@@ -16,10 +16,12 @@ export default class PingCommand extends CommandStructure {
 		};
 	}
 
-	public async run({ interaction, t }: CommandRunData) {
-		const start = Date.now();
-		await interaction.editReply('🤔');
-		const apiPing = Date.now() - start;
-		interaction.editReply(`${t('UTILS_PING', interaction.user, Math.round(client.ws.ping), apiPing)}`);
+	public run({ interaction, t }: CommandRunData) {
+		switch (interaction.options.getSubcommand()) {
+		case 'quiz':
+			client.commands?.get('minigame quiz')?.run({ interaction, t });
+			break;
+		}
+
 	}
 }
