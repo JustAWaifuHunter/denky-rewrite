@@ -199,6 +199,86 @@
                     "name": "Dogecoin"
                 }
             ]
+        },
+        {
+            "title": "Que linguagem de programação é geralmente usada na criação de sistemas operacionais?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Programming.jpg",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Java e Código binário"
+                },
+                {
+                    "name": "C e Assembly",
+                    "correct": true
+                },
+                {
+                    "name": "Kotlin e C#"
+                },
+                {
+                    "name": "C++ e Assembly"
+                }
+            ]
+        },
+        {
+            "title": "O que é o GitHub?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/1920px-GitHub_logo_2013.svg.png",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Plataforma de hospedagem de código-fonte",
+                    "correct": true
+                },
+                {
+                    "name": "Plataforma para solucionar dúvidas"
+                },
+                {
+                    "name": "Plataforma para aprender programação"
+                },
+                {
+                    "name": "Nenhuma das anteriores"
+                }
+            ]
+        },
+        {
+            "title": "Qual empresa comprou o GitHub?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/1920px-GitHub_logo_2013.svg.png",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Embratel"
+                },
+                {
+                    "name": "Apple"
+                },
+                {
+                    "name": "Google"
+                },
+                {
+                    "name": "Microsoft",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "title": "O que a linguagem de programação Go é?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/215px-Go_Logo_Blue.svg.png",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Estaticamente tipada e de script"
+                },
+                {
+                    "name": "Dinamicamente tipada e de script"
+                },
+                {
+                    "name": "Estaticamente tipada e compilada",
+                    "correct": true
+                },
+                {
+                    "name": "Dinamicamente tipada e compilada"
+                }
+            ]
         }
     ]
 }

@@ -12,11 +12,11 @@
                     "name": "Júpiter e Saturno"
                 },
                 {
-                    "name": "Júpiter, Saturno, Urano e Netuno",
-                    "correct": true
+                    "name": "Terra, Marte e Júpiter"
                 },
                 {
-                    "name": "Terra, Marte e Júpiter"
+                    "name": "Júpiter, Saturno, Urano e Netuno",
+                    "correct": true
                 }
             ]
         },
@@ -97,6 +97,46 @@
                 },
                 {
                     "name": "Tritão"
+                }
+            ]
+        },
+        {
+            "title": "Qual a teoria cosmológica dominante sobre o desenvolvimento inicial do universo?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg/1024px-NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Teoria M"
+                },
+                {
+                    "name": "Teoria do Big Bang",
+                    "correct": true
+                },
+                {
+                    "name": "Seleção natural cosmológica"
+                },
+                {
+                    "name": "Universo oscilante"
+                }
+            ]
+        },
+        {
+            "title": "Qual é essa galaxia?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Grande_Nuvem_de_Magalh%C3%A3es.jpg/1920px-Grande_Nuvem_de_Magalh%C3%A3es.jpg",
+            "image_credit": "Wikimedia Commons",
+            "answers": [
+                {
+                    "name": "Grande Nuvem de Magalhães",
+                    "correct": true
+                },
+                {
+                    "name": "Via Láctea"
+                },
+                {
+                    "name": "Galáxia do Triângulo"
+                },
+                {
+                    "name": "Centaurus A"
                 }
             ]
         }
