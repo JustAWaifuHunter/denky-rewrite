@@ -7,6 +7,8 @@ const data = {
 	QUIZ_WRONG_ANSWER: 'Wrong answer!',
 	QUIZ_IMG_CREDIT: 'Image credit',
 	QUIZ_NO_ANSWER: 'You took too long to answer!',
+	PERMISSIONS_BOT_MISSING: (perms: string[]) => `I don't have the required permissions: ${perms.join(', ')}`,
+	PERMISSIONS_USER_MISSING: (perms: string[]) => `You don't have the required permissions: ${perms.join(', ')}`,
 };
 
 export { data };

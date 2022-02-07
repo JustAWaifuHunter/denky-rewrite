@@ -4,9 +4,10 @@ import { data as categories_pt_BR } from './assets/languages/categories/pt_BR';
 import { data as categories_en_US } from './assets/languages/categories/en_US';
 import { data as commands_pt_BR } from './assets/languages/commands/pt_BR';
 import { data as commands_en_US } from './assets/languages/commands/en_US';
-
-import type { Client, Collection } from 'discord.js';
 import Languages from './modules/languages/Languages';
+
+import { CommandStructure } from './utils/baseCommand';
+import type { Client, Collection } from 'discord.js';
 
 interface LangExtender <T> {
 	pt_BR: T;
@@ -25,7 +26,7 @@ export interface Language {
 }
 
 export interface DenkyClient extends Client {
-	commands?: Collection<string, any>;
+	commands?: Collection<string, CommandStructure>;
 	languages?: Language;
 }
 
