@@ -7,7 +7,7 @@ import { data as commands_en_US } from './assets/languages/commands/en_US';
 import Languages from './modules/languages/Languages';
 
 import { CommandStructure } from './utils/baseCommand';
-import type { Client, Collection } from 'discord.js';
+import type { Client } from 'discord.js';
 
 interface LangExtender <T> {
 	pt_BR: T;
@@ -26,7 +26,7 @@ export interface Language {
 }
 
 export interface DenkyClient extends Client {
-	commands?: Collection<string, CommandStructure>;
+	commands?: Map<string, CommandStructure>;
 	languages?: Language;
 	db?: RedisDatabase;
 }
