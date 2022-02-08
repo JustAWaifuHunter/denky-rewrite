@@ -159,7 +159,6 @@
         "template-curly-spacing": "error",
         "wrap-iife": "error",
         "yield-star-spacing": "error",
-        "yoda": "error",
-        "no-mixed-spaces-and-tabs": "off"
+        "yoda": "error"
     }
 }
