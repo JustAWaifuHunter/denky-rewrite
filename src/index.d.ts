@@ -28,6 +28,7 @@ export interface Language {
 export interface DenkyClient extends Client {
 	commands?: Collection<string, CommandStructure>;
 	languages?: Language;
+	db?: RedisDatabase;
 }
 
 declare global {

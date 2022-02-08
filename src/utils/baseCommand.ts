@@ -37,7 +37,7 @@ export class CommandStructure {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public run(_data: CommandRunData): void {
+	public run(_data: CommandRunData, ..._additional: any): void {
 		// Empty comment
 	}
 }

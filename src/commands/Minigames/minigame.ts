@@ -1,4 +1,4 @@
-import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
+import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
 
 export default class MinigameCommand extends CommandStructure {
 	constructor() {
@@ -17,7 +17,7 @@ export default class MinigameCommand extends CommandStructure {
 		};
 	}
 
-	public run({ interaction, t }: CommandRunData) {
+	public override run({ interaction, t }: CommandRunData) {
 		switch (interaction.options.getSubcommand()) {
 		case 'quiz':
 			client.commands?.get('minigame quiz')?.run({ interaction, t });

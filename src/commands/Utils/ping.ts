@@ -1,4 +1,4 @@
-import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
+import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
 
 export default class PingCommand extends CommandStructure {
 	constructor() {
@@ -16,7 +16,7 @@ export default class PingCommand extends CommandStructure {
 		};
 	}
 
-	public async run({ interaction, t }: CommandRunData) {
+	public override async run({ interaction, t }: CommandRunData) {
 		const start = Date.now();
 		await interaction.editReply('🤔');
 		const apiPing = Date.now() - start;

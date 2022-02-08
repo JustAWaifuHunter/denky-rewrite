@@ -1,10 +1,10 @@
-import { CommandStructure, CommandRunData } from '../../utils/baseCommand';
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord.js';
-
 // Quiz data
 import AstronomyData from '../../assets/quiz/astronomy.json';
 import GeographyData from '../../assets/quiz/geography.json';
 import TechData from '../../assets/quiz/tech.json';
+
+import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
 
 type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
 const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
@@ -37,7 +37,7 @@ export default class MinigameCommand extends CommandStructure {
 		};
 	}
 
-	public async run({ interaction, t }: CommandRunData, points = 0) {
+	public override async run({ interaction, t }: CommandRunData, points = 0) {
 		const category: ValidCategories = interaction.options.getString('category') as ValidCategories ?? 'random';
 		const randomQuestion = this._getRandomQuestion(category);
 

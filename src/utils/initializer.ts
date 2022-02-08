@@ -50,7 +50,8 @@ class Initializer {
 			// Some modules are classes and some are functions.
 			try {
 				new BaseModule();
-			} catch {
+			} catch(e) {
+				console.log(`Could not load module ${name}`, e);
 				// eslint-disable-next-line new-cap
 				BaseModule();
 			}
