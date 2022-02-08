@@ -22,6 +22,9 @@ export default class MinigameCommand extends CommandStructure {
 		case 'quiz':
 			client.commands?.get('minigame quiz')?.run({ interaction, t });
 			break;
+		case 'akinator':
+			client.commands?.get('minigame akinator')?.run({ interaction, t });
+			break;
 		}
 
 	}

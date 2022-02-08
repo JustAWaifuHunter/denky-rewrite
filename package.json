@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "aki-api": "^6.0.8",
     "discord.js": "^14.0.0-dev.1644235768.b936103",
     "dotenv": "^14.3.2",
     "redis": "^4.0.3",
