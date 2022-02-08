@@ -16,8 +16,8 @@ export default class InteractionCreateEvent extends null {
 			return client.languages.commands.t(key, interaction.locale.replace('-', '_'), ...args);
 		};
 
-		if (!this._checkBotPermissions(interaction, command, translate)) return;
-		if (!this._checkMemberPermissions(interaction, command, translate)) return;
+		if (!InteractionCreateEvent._checkBotPermissions(interaction, command, translate)) return;
+		if (!InteractionCreateEvent._checkMemberPermissions(interaction, command, translate)) return;
 
 		if (command.config.autoDefer) await interaction.deferReply({ ephemeral: command.config.ephemeral });
 
@@ -25,6 +25,7 @@ export default class InteractionCreateEvent extends null {
 	}
 
 	static _checkBotPermissions(interaction: CommandInteraction, command: CommandStructure, translate: TranslationArguments): boolean {
+		if (command.perms.bot.length === 0) return true;
 		if (!interaction.guild.me.permissions.has(command.perms.bot)) {
 			interaction.reply({
 				content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_BOT_MISSING', command.perms.bot)}`,
@@ -36,7 +37,8 @@ export default class InteractionCreateEvent extends null {
 	}
 
 	static _checkMemberPermissions(interaction: CommandInteraction, command: CommandStructure, translate: TranslationArguments): boolean {
-		if ((interaction.member as GuildMember).permissions.has(command.perms.user)) {
+		if (command.perms.user.length === 0) return true;
+		if (!(interaction.member as GuildMember).permissions.has(command.perms.user)) {
 			interaction.reply({
 				content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_USER_MISSING', command.perms.user)}`,
 				ephemeral: true,
