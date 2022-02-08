@@ -40,6 +40,26 @@ const data = {
 	MINIGAMES_AKINATOR_POSITION: 'Posição',
 	MINIGAMES_AKINATOR_SUCCESS: 'Consegui advinhar novamente! Que tal outra partida?',
 	MINIGAMES_AKINATOR_COULDNOT_GUESS: 'Não consegui advinhar. Que tal outra partida?',
+
+	// AFK
+	UTILS_AFK_ENABLED(u: User) {
+		return `✅ ${u} **|** Agora você está ausente.`;
+	},
+	UTILS_AFK_ALREADY_SET(u: User) {
+		return `❌ ${u} **|** Você já está ausente.`;
+	},
+	UTILS_AFK_NOT_AFK(u: User) {
+		return `❌ ${u} **|** Você não está ausente.`;
+	},
+	UTILS_AFK_REMOVED(u: User) {
+		return `✅ ${u} **|** Você não está mais ausente.`;
+	},
+	UTILS_AFK_AUTOREMOVED(u: User, time: number) {
+		return `👋 ${u} **|** Bem-vindo novamente, seu AFK foi removido.\n⏰ **|** Você ficou ausente <t:${time}:R>`;
+	},
+	UTILS_AFK_MENTIONED_AFK(u: User, time: number, reason?: string) {
+		return `${u} ficou ausente <t:${time}:R>.\n_\`${reason ?? 'Sem motivo informado.'}\`_`;
+	},
 };
 
 export { data };

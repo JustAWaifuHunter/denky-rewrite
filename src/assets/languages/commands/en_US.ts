@@ -22,6 +22,9 @@ const data = {
 	MINIGAMES_AKINATOR_ERROR_STARTING(u: User) {
 		return `❌ ${u} **|** There was an error starting the game.`;
 	},
+	MINIGAMES_AKINATOR_IDK(u: User) {
+		return `I couldn't guess the character you thought!\nHow about trying again, ${u}?`;
+	},
 	MINIGAMES_AKINATOR_QUESTION: 'Question',
 	MINIGAMES_AKINATOR_CHOOSE_ANSWER: 'Choose an answer',
 	MINIGAMES_AKINATOR_STOP: 'Stop playing',
@@ -37,10 +40,26 @@ const data = {
 	MINIGAMES_AKINATOR_POSITION: 'Position',
 	MINIGAMES_AKINATOR_SUCCESS: 'I was able to guess again! How about another game?',
 	MINIGAMES_AKINATOR_COULDNOT_GUESS: 'I couldn\'t guess. How about another game?',
-	MINIGAMES_AKINATOR_IDK(u: User) {
-		return `I couldn't guess the character you thought!\nHow about trying again, ${u}?`;
-	},
 
+	// AFK
+	UTILS_AFK_ENABLED(u: User) {
+		return `✅ ${u} **|** Now you are AFK.`;
+	},
+	UTILS_AFK_ALREADY_SET(u: User) {
+		return `❌ ${u} **|** You are already AFK.`;
+	},
+	UTILS_AFK_NOT_AFK(u: User) {
+		return `❌ ${u} **|** You are not AFK.`;
+	},
+	UTILS_AFK_REMOVED(u: User) {
+		return `✅ ${u} **|** You are no longer AFK.`;
+	},
+	UTILS_AFK_AUTOREMOVED(u: User, time: number) {
+		return `👋 ${u} **|** Welcome back, your AFK has been removed.\n⏰ **|** You stayed AFK <t:${time}:R>`;
+	},
+	UTILS_AFK_MENTIONED_AFK(u: User, time: number, reason?: string) {
+		return `${u} got AFK <t:${time}:R>.\n_\`${reason ?? 'No reason given.'}\`_`;
+	},
 };
 
 export { data };
