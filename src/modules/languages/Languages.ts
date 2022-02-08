@@ -24,11 +24,11 @@ export default class Languages<D extends string, L> {
 		let res: ResponseType = '';
 		res = this[lang][string] || this[defaultSymbol][string];
 
-    	if (typeof res === 'function') {
-    		return res(...args) || `!{${lang}.${string}}!`;
-    	}
+		if (typeof res === 'function') {
+			return res(...args) || `!{${lang}.${string}}!`;
+		}
 
-    	return res || `!{${lang}.${string}}!`;
+		return res || `!{${lang}.${string}}!`;
 	}
 }
 
