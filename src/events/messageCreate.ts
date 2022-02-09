@@ -19,7 +19,7 @@ export default class MessageCreateEvent extends null {
 
 		client.db.delete(message.author.id);
 		// eslint-disable-next-line no-empty-function
-		message.member!.setNickname(data.o).catch(() => {});
+		message.member.setNickname(data.o).catch(() => {});
 		return message.reply(translate('UTILS_AFK_AUTOREMOVED', message.author, data.t)).then(msg => setTimeout(msg.delete, 5000));
 	}
 
