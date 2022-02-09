@@ -1,5 +1,6 @@
 import { Aki } from 'aki-api';
 import type { guess } from 'aki-api/typings/src/functions';
+
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message, SelectMenuComponent, SelectMenuInteraction, SelectMenuOption } from 'discord.js';
 import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 import type { CommandRunData } from '../../../utils/baseCommand';
@@ -16,15 +17,15 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 
 		let internalLang: 'en' | 'pt' = 'en';
 		switch (interaction.locale.replace('-', '_')) {
-			case 'pt_BR':
-				internalLang = 'pt';
-				break;
-			case 'en_US':
-				internalLang = 'en';
-				break;
-			default:
-				internalLang = 'en';
-				break;
+		case 'pt_BR':
+			internalLang = 'pt';
+			break;
+		case 'en_US':
+			internalLang = 'en';
+			break;
+		default:
+			internalLang = 'en';
+			break;
 		}
 
 		// Inicia uma partida
@@ -57,11 +58,15 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 				.replace('2', t('MINIGAMES_AKINATOR_ANSWER_PROB_YES'))
 				.replace('3', t('MINIGAMES_AKINATOR_ANSWER_PROB_NO'))
 				.replace('4', t('MINIGAMES_AKINATOR_ANSWER_IDK'));
+
+      const _option = new SelectMenuOption().setEmoji({ name: String(emojis[i]) }).setLabel(texto).setValue(String(i));
+
 			const _option = new SelectMenuOption()
 				.setEmoji({ name: String(emojis[i]) })
 				.setLabel(texto)
 				.setValue(String(i));
-			_menu.addOptions(_option);
+
+      _menu.addOptions(_option);
 		});
 
 		const _option = new SelectMenuOption().setEmoji({ name: '❌' }).setLabel(t('MINIGAMES_AKINATOR_STOP')).setValue('5');
@@ -74,6 +79,7 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 			embeds: [embed],
 			components: [componentes],
 		})) as Message;
+    
 		const collector = mensagemPartida.createMessageComponentCollector({
 			filter: int => {
 				if (interaction.user.id === int.user.id) return true;
@@ -116,6 +122,7 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 					embed.setTitle(t('MINIGAMES_AKINATOR_GAME_END')).setDescription(t('MINIGAMES_AKINATOR_IDK', interaction.user));
 					// Red color
 					embed.setColor(16060175);
+
 					return interaction.editReply({
 						content: `${interaction.user}`,
 						embeds: [],
@@ -130,6 +137,7 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 				embed.setImage(advinhado.nsfw ? null : advinhado.absolute_picture_path);
 
 				const _rowFinalizado = new ActionRow();
+        
 				const _simBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Success).setCustomId('sim').setEmoji({ name: '✅' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_YES'));
 				const _naoBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Danger).setCustomId('nao').setEmoji({ name: '❌' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_NO'));
 
