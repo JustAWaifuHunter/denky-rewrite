@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-import { Collection } from 'discord.js';
 import { readdir } from 'fs/promises';
 
 class Initializer {
@@ -15,7 +14,7 @@ class Initializer {
 	}
 
 	async loadCommands() {
-		client.commands = new Collection();
+		client.commands = new Map();
 		const categories = await readdir('./commands/');
 		for (const category of categories) {
 			const commands = await readdir(`./commands/${category}`);
@@ -50,7 +49,8 @@ class Initializer {
 			// Some modules are classes and some are functions.
 			try {
 				new BaseModule();
-			} catch {
+			} catch(e) {
+				console.log(`Could not load module ${name}`, e);
 				// eslint-disable-next-line new-cap
 				BaseModule();
 			}

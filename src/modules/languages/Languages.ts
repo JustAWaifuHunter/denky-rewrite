@@ -2,7 +2,7 @@ type ResponseType = string | ((...options: unknown[]) => string)
 
 const defaultSymbol = Symbol('default');
 
-export default class Languages<D extends string, L extends object> {
+export default class Languages<D extends string, L> {
 	[x: string]: any;
 	[defaultSymbol]: D;
 
@@ -22,22 +22,22 @@ export default class Languages<D extends string, L extends object> {
 
 	t(string: string, lang: string, ...args: any): string {
 		let res: ResponseType = '';
-		res = this[lang][string] || this[defaultSymbol][string];
+		res = this[lang][string] || this[this[defaultSymbol]][string];
 
-    	if (typeof res === 'function') {
-    		return res(...args) || `!{${lang}.${string}}!`;
-    	}
+		if (typeof res === 'function') {
+			return res(...args) || `!{${lang}.${string}}!`;
+		}
 
-    	return res || `!{${lang}.${string}}!`;
+		return res || `!{${lang}.${string}}!`;
 	}
 }
 
-import type { data as descriptions_pt_BR } from '../../assets/languages/descriptions/pt_BR';
-import type { data as descriptions_en_US } from '../../assets/languages/descriptions/en_US';
-import type { data as categories_pt_BR } from '../../assets/languages/categories/pt_BR';
 import type { data as categories_en_US } from '../../assets/languages/categories/en_US';
-import type { data as commands_pt_BR } from '../../assets/languages/commands/pt_BR';
+import type { data as categories_pt_BR } from '../../assets/languages/categories/pt_BR';
 import type { data as commands_en_US } from '../../assets/languages/commands/en_US';
+import type { data as commands_pt_BR } from '../../assets/languages/commands/pt_BR';
+import type { data as descriptions_en_US } from '../../assets/languages/descriptions/en_US';
+import type { data as descriptions_pt_BR } from '../../assets/languages/descriptions/pt_BR';
 
 export type Commands = typeof commands_pt_BR & typeof commands_en_US;
 export type Descriptions = typeof descriptions_pt_BR & typeof descriptions_en_US;
