@@ -21,12 +21,12 @@ export default class PingCommand extends CommandStructure {
 	public override async run({ interaction, t }: CommandRunData) {
 		switch (interaction.options.getSubcommand()) {
 			case 'on': {
-				if (await client.db.get(`afk${interaction.user.id}`)) {
+				if (await global.client.db.get(`afk${interaction.user.id}`)) {
 					interaction.editReply(t('UTILS_AFK_ALREADY_SET', interaction.user));
 					break;
 				}
 
-				await client.db.set(`afk${interaction.user.id}`, {
+				await global.client.db.set(`afk${interaction.user.id}`, {
 					g: interaction.guild.id,
 					m: interaction.options.getString('reason'),
 					o: (interaction.member as GuildMember).nickname as string,
@@ -42,13 +42,13 @@ export default class PingCommand extends CommandStructure {
 			}
 
 			case 'off': {
-				const data = await client.db.get(`afk${interaction.user.id}`);
+				const data = await global.client.db.get(`afk${interaction.user.id}`);
 				if (!data) {
 					interaction.editReply(t('UTILS_AFK_NOT_AFK', interaction.user));
 					break;
 				}
 
-				await client.db.delete(`afk${interaction.user.id}`);
+				await global.client.db.delete(`afk${interaction.user.id}`);
 				(interaction.member as GuildMember).setNickname(data.o).catch(() => {});
 				interaction.editReply(t('UTILS_AFK_REMOVED', interaction.user));
 				break;

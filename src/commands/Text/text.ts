@@ -1,16 +1,15 @@
 import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
 import { SubCommandInterpreter } from '../../utils/subCommandInterpreter';
 
-export default class MinigameCommand extends CommandStructure {
+export default class PingCommand extends CommandStructure {
 	constructor() {
 		super();
 
-		this.name = 'minigame';
-		this.category = 'MINIGAMES';
+		this.name = 'text';
+		this.category = 'TEXT';
 		this.config = {
 			autoDefer: true,
 			ephemeral: false,
-			showInHelp: false,
 		};
 		this.perms = {
 			bot: [],
@@ -21,7 +20,7 @@ export default class MinigameCommand extends CommandStructure {
 	public override async run({ interaction }: CommandRunData) {
 		new SubCommandInterpreter(interaction).run({
 			type: 'common',
-			switchs: [await import('./SubCommands/quiz'), await import('./SubCommands/akinator')],
+			switchs: [await import('./SubCommands/clapify'), await import('./SubCommands/emojify')],
 		});
 	}
 }

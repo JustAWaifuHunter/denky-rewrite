@@ -1,31 +1,17 @@
 import { Aki } from 'aki-api';
 import type { guess } from 'aki-api/typings/src/functions';
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message, SelectMenuComponent, SelectMenuInteraction, SelectMenuOption } from 'discord.js';
-import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
+import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
+import type { CommandRunData } from '../../../utils/baseCommand';
 
 const partidas = new Set();
 const emojis = ['👍', '👎', '❔', '🤔', '🤷', '❌'];
 
-export default class MinigameCommand extends CommandStructure {
-	constructor() {
-		super();
-
-		this.name = 'minigame akinator';
-		this.category = 'MINIGAMES';
-		this.config = {
-			autoDefer: true,
-			ephemeral: false,
-		};
-		this.perms = {
-			bot: ['EmbedLinks'],
-			user: [],
-		};
-	}
+export default class MinigameAkinatorCommand extends SubCommandSwitcher {
+	override name = 'akinator';
 
 	public override async run({ interaction, t }: CommandRunData) {
-		if (partidas.has(interaction.user.id)) {
-			return interaction.editReply(t('MINIGAMES_AKINATOR_ALREADY_RUNNING', interaction.user));
-		}
+		if (partidas.has(interaction.user.id)) return interaction.editReply(t('MINIGAMES_AKINATOR_ALREADY_RUNNING', interaction.user));
 		partidas.add(interaction.user.id);
 
 		let internalLang: 'en' | 'pt' = 'en';

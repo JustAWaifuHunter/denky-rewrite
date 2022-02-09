@@ -33,13 +33,13 @@ const data = {
 	MINIGAMES_AKINATOR_ANSWER_NO: 'No',
 	MINIGAMES_AKINATOR_ANSWER_PROB_YES: 'Probably yes',
 	MINIGAMES_AKINATOR_ANSWER_PROB_NO: 'Probably no',
-	MINIGAMES_AKINATOR_ANSWER_IDK: 'I don\'t know',
+	MINIGAMES_AKINATOR_ANSWER_IDK: "I don't know",
 	MINIGAMES_AKINATOR_GAME_END: 'Game over!',
 	MINIGAMES_AKINATOR_GAME_TIMEOUT: 'The time is over.',
 	MINIGAMES_AKINATOR_IS_THIS_YOUR_CHAR: 'Is this your character?',
 	MINIGAMES_AKINATOR_POSITION: 'Position',
 	MINIGAMES_AKINATOR_SUCCESS: 'I was able to guess again! How about another game?',
-	MINIGAMES_AKINATOR_COULDNOT_GUESS: 'I couldn\'t guess. How about another game?',
+	MINIGAMES_AKINATOR_COULDNOT_GUESS: "I couldn't guess. How about another game?",
 
 	// AFK
 	UTILS_AFK_ENABLED(u: User) {

@@ -8,7 +8,8 @@ export default class RedisDatabase {
 	}
 
 	set(key: string, value: any) {
-		if (typeof value !== 'string') value = JSON.stringify(value);
+		if (typeof value !== 'string' && typeof value === 'object') value = JSON.stringify(value);
+		if (Buffer.isBuffer(value)) value = value.toString();
 		return this.client.set(key, value);
 	}
 

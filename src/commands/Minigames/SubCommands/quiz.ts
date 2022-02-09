@@ -1,10 +1,10 @@
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord.js';
+import type { CommandRunData } from '../../../utils/baseCommand';
+import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 // Quiz data
-import AstronomyData from '../../assets/quiz/astronomy.json';
-import GeographyData from '../../assets/quiz/geography.json';
-import TechData from '../../assets/quiz/tech.json';
-
-import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
+import AstronomyData from '../../../assets/quiz/astronomy.json';
+import GeographyData from '../../../assets/quiz/geography.json';
+import TechData from '../../../assets/quiz/tech.json';
 
 type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
 const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
@@ -21,21 +21,8 @@ interface QuestionStrucutre {
 	answers: AnswersStructure[];
 }
 
-export default class MinigameCommand extends CommandStructure {
-	constructor() {
-		super();
-
-		this.name = 'minigame quiz';
-		this.category = 'MINIGAMES';
-		this.config = {
-			autoDefer: true,
-			ephemeral: false,
-		};
-		this.perms = {
-			bot: ['EmbedLinks'],
-			user: [],
-		};
-	}
+export default class MinigameQuizCommand extends SubCommandSwitcher {
+	override name = 'quiz';
 
 	public override async run({ interaction, t }: CommandRunData, points = 0) {
 		const category: ValidCategories = (interaction.options.getString('category') as ValidCategories) ?? 'random';

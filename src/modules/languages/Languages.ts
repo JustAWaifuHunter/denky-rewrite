@@ -22,7 +22,7 @@ export default class Languages<D extends string, L> {
 
 	t(string: string, lang: string, ...args: any): string {
 		let res: ResponseType = '';
-		res = this[lang][string] || this[defaultSymbol][string];
+		res = this[lang][string] || this[this[defaultSymbol]][string];
 
 		if (typeof res === 'function') {
 			return res(...args) || `!{${lang}.${string}}!`;
