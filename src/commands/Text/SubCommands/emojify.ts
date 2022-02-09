@@ -11,8 +11,7 @@ export default class Emojify extends SubCommandSwitcher {
 			.split('')
 			.map(str => (ignored.includes(str) ? str : `:regional_indicator_${str}:`))
 			.join('')
-
-    .replaceAll('!', '❗')
+			.replaceAll('!', '❗')
 			.replaceAll('?', '❓')
 			.replaceAll('$', '💲')
 			.replaceAll('-', '➖')
