@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import { data as descriptions_pt_BR } from './assets/languages/descriptions/pt_BR';
 import { data as descriptions_en_US } from './assets/languages/descriptions/en_US';
 import { data as categories_pt_BR } from './assets/languages/categories/pt_BR';
@@ -32,6 +33,6 @@ export interface DenkyClient extends Client {
 }
 
 declare global {
-	// eslint-disable-next-line no-var
 	var client: DenkyClient;
+	var IS_MAIN_PROCESS: boolean;
 }

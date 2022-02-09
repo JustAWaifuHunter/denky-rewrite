@@ -17,6 +17,6 @@
   "scripts": {
     "build": "npm run lint && tsc --project ./tsconfig.json",
     "lint": "eslint --fix ./src/**/*.ts",
-    "start": "cd build && node index.js"
+    "start": "cd build && node shard.js"
   }
 }

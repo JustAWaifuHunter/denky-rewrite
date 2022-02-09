@@ -21,4 +21,7 @@ global.client = client;
 
 client.login(process.env.BOT_TOKEN);
 
+// We should set this, so tasks don't duplicade (giveaways, reminders, etc)
+if (client.shard.ids[0] === 0) global.IS_MAIN_PROCESS = true;
+
 new Initializer();
