@@ -19,13 +19,12 @@ export default class MinigameCommand extends CommandStructure {
 
 	public override run({ interaction, t }: CommandRunData) {
 		switch (interaction.options.getSubcommand()) {
-		case 'quiz':
-			client.commands?.get('minigame quiz')?.run({ interaction, t });
-			break;
-		case 'akinator':
-			client.commands?.get('minigame akinator')?.run({ interaction, t });
-			break;
+			case 'quiz':
+				client.commands?.get('minigame quiz')?.run({ interaction, t });
+				break;
+			case 'akinator':
+				client.commands?.get('minigame akinator')?.run({ interaction, t });
+				break;
 		}
-
 	}
 }

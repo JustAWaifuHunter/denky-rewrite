@@ -10,7 +10,7 @@ import Languages from './modules/languages/Languages';
 import { CommandStructure } from './utils/baseCommand';
 import type { Client } from 'discord.js';
 
-interface LangExtender <T> {
+interface LangExtender<T> {
 	pt_BR: T;
 	en_US: T;
 	t: (string: keyof T, lang: 'pt_BR' | 'en_US', ...args: Array<string>) => string;

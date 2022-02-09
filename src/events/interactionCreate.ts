@@ -27,10 +27,7 @@ export default class InteractionCreateEvent extends null {
 	static _checkBotPermissions(interaction: CommandInteraction, command: CommandStructure, translate: TranslationArguments): boolean {
 		if (command.perms.bot.length === 0) return true;
 		if (!interaction.guild.me.permissions.has(command.perms.bot)) {
-			interaction.reply({
-				content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_BOT_MISSING', command.perms.bot)}`,
-				ephemeral: true,
-			});
+			interaction.reply({ content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_BOT_MISSING', command.perms.bot)}`, ephemeral: true });
 			return false;
 		}
 		return true;
@@ -39,10 +36,7 @@ export default class InteractionCreateEvent extends null {
 	static _checkMemberPermissions(interaction: CommandInteraction, command: CommandStructure, translate: TranslationArguments): boolean {
 		if (command.perms.user.length === 0) return true;
 		if (!(interaction.member as GuildMember).permissions.has(command.perms.user)) {
-			interaction.reply({
-				content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_USER_MISSING', command.perms.user)}`,
-				ephemeral: true,
-			});
+			interaction.reply({ content: `❌ ${interaction.user} **|** ${translate('PERMISSIONS_USER_MISSING', command.perms.user)}`, ephemeral: true });
 			return false;
 		}
 		return true;

@@ -1,4 +1,4 @@
-type ResponseType = string | ((...options: unknown[]) => string)
+type ResponseType = string | ((...options: unknown[]) => string);
 
 const defaultSymbol = Symbol('default');
 

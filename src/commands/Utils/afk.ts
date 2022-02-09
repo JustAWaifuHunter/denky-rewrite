@@ -20,40 +20,39 @@ export default class PingCommand extends CommandStructure {
 
 	public override async run({ interaction, t }: CommandRunData) {
 		switch (interaction.options.getSubcommand()) {
-		case 'on': {
-			if (await client.db.get(`afk${interaction.user.id}`)) {
-				interaction.editReply(t('UTILS_AFK_ALREADY_SET', interaction.user));
+			case 'on': {
+				if (await client.db.get(`afk${interaction.user.id}`)) {
+					interaction.editReply(t('UTILS_AFK_ALREADY_SET', interaction.user));
+					break;
+				}
+
+				await client.db.set(`afk${interaction.user.id}`, {
+					g: interaction.guild.id,
+					m: interaction.options.getString('reason'),
+					o: (interaction.member as GuildMember).nickname as string,
+					t: Math.round(Date.now() / 1000),
+				});
+
+				const nome = (interaction.member as GuildMember).nickname || interaction.user.username;
+
+				(interaction.member as GuildMember).setNickname(`[AFK] ${nome.slice(0, 19)}`, 'AFK').catch(() => {});
+				interaction.editReply(t('UTILS_AFK_ENABLED', interaction.user));
+
 				break;
 			}
 
-			await client.db.set(`afk${interaction.user.id}`, {
-				g: interaction.guild.id,
-				m: interaction.options.getString('reason'),
-				o: (interaction.member as GuildMember).nickname as string,
-				t: Math.round(Date.now() / 1000),
-			});
+			case 'off': {
+				const data = await client.db.get(`afk${interaction.user.id}`);
+				if (!data) {
+					interaction.editReply(t('UTILS_AFK_NOT_AFK', interaction.user));
+					break;
+				}
 
-			const nome = (interaction.member as GuildMember).nickname || interaction.user.username;
-
-			(interaction.member as GuildMember).setNickname(`[AFK] ${nome.slice(0, 19)}`, 'AFK').catch(() => {});
-			interaction.editReply(t('UTILS_AFK_ENABLED', interaction.user));
-
-			break;
-		}
-
-
-		case 'off': {
-			const data = await client.db.get(`afk${interaction.user.id}`);
-			if (!data) {
-				interaction.editReply(t('UTILS_AFK_NOT_AFK', interaction.user));
+				await client.db.delete(`afk${interaction.user.id}`);
+				(interaction.member as GuildMember).setNickname(data.o).catch(() => {});
+				interaction.editReply(t('UTILS_AFK_REMOVED', interaction.user));
 				break;
 			}
-
-			await client.db.delete(`afk${interaction.user.id}`);
-			(interaction.member as GuildMember).setNickname(data.o).catch(() => {});
-			interaction.editReply(t('UTILS_AFK_REMOVED', interaction.user));
-			break;
-		}
 		}
 	}
 }

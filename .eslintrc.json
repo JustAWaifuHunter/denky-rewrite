@@ -68,12 +68,15 @@
             "error",
             "property"
         ],
+        "dot-notation": "error",
         "eqeqeq": "error",
+        "eol-last": ["error", "always"],
         "for-direction": "error",
         "getter-return": "error",
         "indent": [
             "error",
-            "tab"
+            "tab",
+            { "SwitchCase": 1}
         ],
         "max-len": [
             "error",
@@ -100,6 +103,7 @@
         "no-duplicate-imports": "error",
         "no-else-return": "error",
         "no-empty-function": "error",
+        "no-lonely-if": "error",
         "no-eq-null": "error",
         "no-fallthrough": "error",
         "no-new-wrappers": "error",
@@ -140,7 +144,10 @@
         "prefer-template": "error",
         "quotes": [
             "error",
-            "single"
+            "single",
+            {
+                "avoidEscape": true
+            }
         ],
         "require-await": "error",
         "rest-spread-spacing": "error",

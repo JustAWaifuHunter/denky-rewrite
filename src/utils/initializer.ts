@@ -3,7 +3,7 @@ import { readdir } from 'fs/promises';
 
 class Initializer {
 	constructor() {
-		if(global.IS_MAIN_PROCESS) console.log('[DENKY] Starting bot...');
+		if (global.IS_MAIN_PROCESS) console.log('[DENKY] Starting bot...');
 		this.init();
 	}
 
@@ -23,7 +23,9 @@ class Initializer {
 				const { default: BaseCommand } = await import(`../commands/${category}/${command}`);
 				const Command = new BaseCommand();
 				client.commands.set(Command.name, Command);
-				if(global.IS_MAIN_PROCESS) console.log(`[DENKY] Loaded command: ${Command.name}`);
+				if (global.IS_MAIN_PROCESS) {
+					console.log(`[DENKY] Loaded command: ${Command.name}`);
+				}
 			}
 		}
 	}
@@ -35,7 +37,9 @@ class Initializer {
 			const name = event.replace('.js', '');
 			const { default: BaseEvent } = await import(`../events/${event}`);
 			client.on(name, BaseEvent.run);
-			if(global.IS_MAIN_PROCESS) console.log(`[DENKY] Loaded event: ${name}`);
+			if (global.IS_MAIN_PROCESS) {
+				console.log(`[DENKY] Loaded event: ${name}`);
+			}
 		}
 	}
 
@@ -49,12 +53,16 @@ class Initializer {
 			// Some modules are classes and some are functions.
 			try {
 				new BaseModule();
-			} catch(e) {
-				if(global.IS_MAIN_PROCESS) console.log(`Could not load module ${name}`, e);
+			} catch (e) {
+				if (global.IS_MAIN_PROCESS) {
+					console.log(`Could not load module ${name}`, e);
+				}
 				// eslint-disable-next-line new-cap
 				BaseModule();
 			}
-			if(global.IS_MAIN_PROCESS) console.log(`[DENKY] Loaded module: ${name}`);
+			if (global.IS_MAIN_PROCESS) {
+				console.log(`[DENKY] Loaded module: ${name}`);
+			}
 		}
 	}
 }
