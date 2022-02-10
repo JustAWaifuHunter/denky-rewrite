@@ -16,7 +16,7 @@ const formats: string[] = [
 ];
 
 export default class dateParser extends null {
-	parse(rawDate: Date | string): number {
+	static parse(rawDate: Date | string): number {
 		const SaoPauloDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
 
 		const now = dayjs(SaoPauloDate);

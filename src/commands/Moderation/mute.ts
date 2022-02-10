@@ -1,6 +1,6 @@
 import type { GuildMember, GuildMemberRoleManager } from 'discord.js';
 import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
-import dateParser from '../utils/dateParser';
+import dateParser from '../../utils/dateParser';
 
 export default class MuteCommand extends CommandStructure {
 	constructor() {
