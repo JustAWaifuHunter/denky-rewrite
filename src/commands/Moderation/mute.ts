@@ -47,7 +47,7 @@ export default class MuteCommand extends CommandStructure {
 		}
 
 		member
-			.disableCommunicationUntil(Date.now() + durationMs, `Applied by ${interaction.user.tag}`)
+			.disableCommunicationUntil(Date.now() + parsedDate, `Applied by ${interaction.user.tag}`)
 			.then(() => {
 				interaction.editReply(`✅ ${interaction.user} **|** ${t('MOD_MUTE_SUCCESS')}`);
 			})
