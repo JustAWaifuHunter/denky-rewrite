@@ -35,4 +35,9 @@ export class CommandStructure {
 			user: [],
 		};
 	}
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public run(_data: CommandRunData, ..._additional: any): void {
+		// Empty comment
+	}
 }
