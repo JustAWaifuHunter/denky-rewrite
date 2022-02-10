@@ -18,9 +18,10 @@
 		"typescript": "^4.5.5",
 		"uglifyjs-folder": "^3.0.0"
 	},
-  "scripts": {
-    "build": "npm run lint && npx sucrase ./src -d ./build --esModuleInterop --transforms typescript,imports && npx uglifyjs-folder ./build --compress --mangle -eo build -x .js",
-    "lint": "npx prettier --write src/**/*.ts && npx eslint --fix src/**/*.ts",
-    "start": "cd ./build && node ./shard.js"
-  }
+	"scripts": {
+		"build": "npx sucrase ./src -d ./build --esModuleInterop --transforms typescript,imports && npx uglifyjs-folder ./build --compress --mangle -eo build -x .js",
+		"build:lint": "npm run lint && npx sucrase ./src -d ./build --esModuleInterop --transforms typescript,imports && npx uglifyjs-folder ./build --compress --mangle -eo build -x .js",
+		"lint": "npx prettier --write src/**/*.ts && npx eslint --fix src/**/*.ts",
+		"start": "cd build && node shard.js"
+	}
 }
