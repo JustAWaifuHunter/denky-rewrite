@@ -19,6 +19,9 @@ const client: DenkyClient = new Client({
 
 global.client = client;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+global.o_O = (..._args: any) => undefined;
+
 client.login(process.env.BOT_TOKEN);
 
 // We should set this, so tasks don't duplicade (giveaways, reminders, etc)

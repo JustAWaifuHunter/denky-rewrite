@@ -35,7 +35,7 @@ export default class PingCommand extends CommandStructure {
 
 				const nome = (interaction.member as GuildMember).nickname || interaction.user.username;
 
-				(interaction.member as GuildMember).setNickname(`[AFK] ${nome.slice(0, 19)}`, 'AFK').catch(() => {});
+				(interaction.member as GuildMember).setNickname(`[AFK] ${nome.slice(0, 19)}`, 'AFK').catch(o_O);
 				interaction.editReply(t('UTILS_AFK_ENABLED', interaction.user));
 
 				break;
@@ -49,7 +49,7 @@ export default class PingCommand extends CommandStructure {
 				}
 
 				await client.db.delete(`afk${interaction.user.id}`);
-				(interaction.member as GuildMember).setNickname(data.o).catch(() => {});
+				(interaction.member as GuildMember).setNickname(data.o).catch(o_O);
 				interaction.editReply(t('UTILS_AFK_REMOVED', interaction.user));
 				break;
 			}

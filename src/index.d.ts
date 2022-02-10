@@ -35,4 +35,5 @@ export interface DenkyClient extends Client {
 declare global {
 	var client: DenkyClient;
 	var IS_MAIN_PROCESS: boolean;
+	var o_O: (...args: any) => undefined;
 }

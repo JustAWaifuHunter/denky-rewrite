@@ -1,10 +1,11 @@
 import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord.js';
-import type { CommandRunData } from '../../../utils/baseCommand';
-import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 // Quiz data
 import AstronomyData from '../../../assets/quiz/astronomy.json';
 import GeographyData from '../../../assets/quiz/geography.json';
 import TechData from '../../../assets/quiz/tech.json';
+
+import type { CommandRunData } from '../../../utils/baseCommand';
+import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 
 type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
 const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
@@ -36,28 +37,21 @@ export default class MinigameQuizCommand extends SubCommandSwitcher {
 			.setImage(randomQuestion.image ?? null)
 			.setFooter(randomQuestion.image_credit ? { text: `${t('QUIZ_IMG_CREDIT')}: ${randomQuestion.image_credit}` } : null);
 
-		const message = (await interaction.editReply({
-			components: [row],
-			embeds: [embed],
-		})) as Message;
+		const message = (await interaction.editReply({ components: [row], embeds: [embed] })) as Message;
 		const collector = message.createMessageComponentCollector({ filter: button => button.user.id === interaction.user.id, max: 1, time: 30000 });
 
 		collector.on('collect', async collected => {
 			await collected.deferUpdate();
 
 			const wrongRow = this._generateButtons(randomQuestion.answers, new ActionRow(), ButtonStyle.Secondary, true);
-			await interaction.editReply({
-				components: [wrongRow],
-				embeds: [embed],
-			});
+			await interaction.editReply({ components: [wrongRow], embeds: [embed] });
 
 			const answer = randomQuestion.answers[Number(collected.customId)];
 
 			if (answer.correct) {
 				return collected.followUp({ content: `✅ ${interaction.user} **|** ${t('QUIZ_RIGHT_ANSWER')}` }).then(r => {
 					setTimeout(() => {
-						// eslint-disable-next-line no-empty-function
-						(r as Message).delete().catch(() => {});
+						(r as Message).delete().catch(o_O);
 						client.commands?.get('minigame quiz')?.run({ interaction, t }, ++points);
 					}, 2000).unref();
 				});
