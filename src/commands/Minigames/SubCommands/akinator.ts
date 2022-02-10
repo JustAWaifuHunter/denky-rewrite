@@ -58,15 +58,11 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 				.replace('3', t('MINIGAMES_AKINATOR_ANSWER_PROB_NO'))
 				.replace('4', t('MINIGAMES_AKINATOR_ANSWER_IDK'));
 
-      const _option = new SelectMenuOption().setEmoji({ name: String(emojis[i]) }).setLabel(texto).setValue(String(i));
-
 			const _option = new SelectMenuOption()
 				.setEmoji({ name: String(emojis[i]) })
 				.setLabel(texto)
 				.setValue(String(i));
 			_menu.addOptions(_option);
-
-      _menu.addOptions(_option);
 		});
 
 		const _option = new SelectMenuOption().setEmoji({ name: '❌' }).setLabel(t('MINIGAMES_AKINATOR_STOP')).setValue('5');
@@ -79,7 +75,7 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 			embeds: [embed],
 			components: [componentes],
 		})) as Message;
-    
+
 		const collector = mensagemPartida.createMessageComponentCollector({
 			filter: int => {
 				if (interaction.user.id === int.user.id) return true;
