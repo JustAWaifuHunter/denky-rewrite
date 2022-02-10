@@ -9,6 +9,7 @@ const emojis = ['👍', '👎', '❔', '🤔', '🤷', '❌'];
 
 export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 	override name = 'akinator';
+	override parent = 'minigame';
 
 	public override async run({ interaction, t }: CommandRunData) {
 		if (partidas.has(interaction.user.id)) return interaction.editReply(t('MINIGAMES_AKINATOR_ALREADY_RUNNING', interaction.user));

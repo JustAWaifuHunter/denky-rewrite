@@ -14,6 +14,7 @@ const data = {
 	'TEXT CLAPIFY': 'Deixa sua mensagem 👏bater👏palmas👏para👏os👏seus👏haters!👏',
 	'TEXT EMOJIFY': 'Troca todas as letras de um texto por um emoji',
 	'TEXT INVERT': 'Inverte as letras de um texto',
+	'TEXT VAPORWAVE': 'Faça uma mensagem V A P O R O N D A.',
 };
 
 export { data };

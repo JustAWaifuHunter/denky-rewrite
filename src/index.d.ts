@@ -9,6 +9,7 @@ import Languages from './modules/languages/Languages';
 
 import { CommandStructure } from './utils/baseCommand';
 import type { Client } from 'discord.js';
+import type { SubCommandSwitcher } from './utils/subCommandInterpreter';
 
 interface LangExtender<T> {
 	pt_BR: T;
@@ -28,6 +29,7 @@ export interface Language {
 
 export interface DenkyClient extends Client {
 	commands?: Map<string, CommandStructure>;
+	subCommands?: Map<string, SubCommandSwitcher>;
 	languages?: Language;
 	db?: RedisDatabase;
 }

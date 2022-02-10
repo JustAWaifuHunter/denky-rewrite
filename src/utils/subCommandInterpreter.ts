@@ -1,12 +1,14 @@
 /* eslint-disable new-cap */
 import type { ChatInputCommandInteraction } from 'discord.js';
-import type { Commands } from '../modules/languages/Languages';
+import type { Commands, Descriptions } from '../modules/languages/Languages';
 import type { CommandRunData } from './baseCommand';
 
-const subCommandCache = new Map();
+const subCommandCache = client.subCommands;
 
 abstract class SubCommandSwitcher {
 	name: string;
+	description: keyof Descriptions;
+	parent: string;
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	run(_data: CommandRunData) {
 		// Empty comment
@@ -15,7 +17,7 @@ abstract class SubCommandSwitcher {
 
 interface InterpreterOptions {
 	type: 'group' | 'common';
-	switchs: ({ name: string; run: (_data: CommandRunData) => void } | { default: new () => SubCommandSwitcher })[];
+	switchs: ({ name: string; description: keyof Descriptions; parent: string; run: (_data: CommandRunData) => void } | { default: new () => SubCommandSwitcher })[];
 }
 
 class SubCommandInterpreter {

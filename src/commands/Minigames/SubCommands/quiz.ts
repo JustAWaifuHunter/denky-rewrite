@@ -24,6 +24,7 @@ interface QuestionStrucutre {
 
 export default class MinigameQuizCommand extends SubCommandSwitcher {
 	override name = 'quiz';
+	override parent = 'minigame';
 
 	public override async run({ interaction, t }: CommandRunData, points = 0) {
 		const category: ValidCategories = (interaction.options.getString('category') as ValidCategories) ?? 'random';

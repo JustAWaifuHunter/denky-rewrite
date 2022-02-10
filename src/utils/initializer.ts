@@ -15,6 +15,7 @@ class Initializer {
 
 	async loadCommands() {
 		client.commands = new Map();
+		client.subCommands = new Map();
 		const categories = await readdir('./commands/');
 		for (const category of categories) {
 			const commands = await readdir(`./commands/${category}`);
