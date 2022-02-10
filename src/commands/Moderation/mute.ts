@@ -1,6 +1,6 @@
 import type { GuildMember, GuildMemberRoleManager } from 'discord.js';
 import { CommandRunData, CommandStructure } from '../../utils/baseCommand';
-import DateParser from '../utils/dateParser';
+import dateParser from '../utils/dateParser';
 
 export default class MuteCommand extends CommandStructure {
 	constructor() {
@@ -41,9 +41,9 @@ export default class MuteCommand extends CommandStructure {
 		const duration = interaction.options.getString('duration') as string;
 		let parsedDate: number | null;
 		try {
-			new DateParser(duration).parse();
+			parsedDate = dateParser.parse(duration);
 		} catch {
-			return;
+			return interaction.editReply(`❌ ${interaction.user} **|** ${t('MOD_MUTE_INVALID_DURATION')}`);
 		}
 
 		member

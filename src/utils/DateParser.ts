@@ -15,17 +15,12 @@ const formats: string[] = [
 	'HH:mm',
 ];
 
-export default class DateParser {
-	rawDate: Date | string;
-	constructor(date: Date | string) {
-		this.rawDate = date;
-	}
-
-	parse(): number {
+export default class dateParser extends null {
+	parse(rawDate: Date | string): number {
 		const SaoPauloDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
 
 		const now = dayjs(SaoPauloDate);
-		let date = dayjs(this.rawDate, formats, 'pt', true);
+		let date = dayjs(rawDate, formats, 'pt', true);
 
 		if (date.year() < SaoPauloDate.getFullYear()) date = date.year(SaoPauloDate.getFullYear());
 		if (date.year() === SaoPauloDate.getFullYear()) {

@@ -35,13 +35,11 @@ class SubCommandInterpreter {
 		const cacheName = `${this.command.commandName} ${options.type === 'group' ? this.command.options.getSubcommandGroup() : ''} ${subCommandName}`;
 
 		if (Switcher) {
-			const subCommand = subCommandCache.get(cacheName) || (('default' in Switcher ? new Switcher.default() : Switcher) as SubCommandSwitcher);
+			const subCommand: SubCommandSwitcher = subCommandCache.get(cacheName) ?? (('default' in Switcher ? new Switcher.default() : Switcher));
 
 			subCommand.run({ interaction: this.command, t: translate });
 
-			if (!subCommandCache.has(cacheName)) {
-				subCommandCache.set(cacheName, subCommand);
-			}
+			if (!subCommandCache.has(cacheName)) subCommandCache.set(cacheName, subCommand);
 		}
 	}
 }
