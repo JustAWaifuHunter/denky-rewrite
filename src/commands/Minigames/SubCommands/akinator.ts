@@ -1,6 +1,7 @@
 import { Aki } from 'aki-api';
 import type { guess } from 'aki-api/typings/src/functions';
-import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message, MessageComponentInteraction, SelectMenuComponent, SelectMenuInteraction, SelectMenuOption } from 'discord.js';
+import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message, SelectMenuComponent, SelectMenuInteraction, SelectMenuOption } from 'discord.js';
+import type { CommandRunData } from '../../../utils/baseCommand';
 import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 
 const partidas = new Set();
@@ -8,30 +9,28 @@ const emojis = ['👍', '👎', '❔', '🤔', '🤷', '❌'];
 
 export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 	override name = 'akinator';
+	override parent = 'minigame';
 
-	public override async run({ interaction, t }) {
+	public override async run({ interaction, t }: CommandRunData) {
 		if (partidas.has(interaction.user.id)) return interaction.editReply(t('MINIGAMES_AKINATOR_ALREADY_RUNNING', interaction.user));
 		partidas.add(interaction.user.id);
 
-		let internalLang: 'en' | 'pt' = 'en';
+		let internalLang: 'en' | 'pt';
 		switch (interaction.locale.replace('-', '_')) {
-		case 'pt_BR':
-			internalLang = 'pt';
-			break;
-		case 'en_US':
-			internalLang = 'en';
-			break;
-		default:
-			internalLang = 'en';
-			break;
+			case 'pt_BR':
+				internalLang = 'pt';
+				break;
+			case 'en_US':
+				internalLang = 'en';
+				break;
+			default:
+				internalLang = 'en';
+				break;
 		}
 
 		// Inicia uma partida
 		const embed = new Embed();
-		const aki = new Aki({
-			region: internalLang,
-			childMode: true,
-		});
+		const aki = new Aki({ region: internalLang, childMode: true });
 
 		try {
 			await aki.start();
@@ -49,14 +48,18 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 		const componentes = new ActionRow();
 		const _menu = new SelectMenuComponent().setCustomId('menu').setPlaceholder(t('MINIGAMES_AKINATOR_CHOOSE_ANSWER'));
 
-		aki.answers.forEach((_p, i) => {
+		aki.answers.forEach((_p: any, i: string | number) => {
 			const texto = String(i)
 				.replace('0', t('MINIGAMES_AKINATOR_ANSWER_YES'))
 				.replace('1', t('MINIGAMES_AKINATOR_ANSWER_NO'))
 				.replace('2', t('MINIGAMES_AKINATOR_ANSWER_PROB_YES'))
 				.replace('3', t('MINIGAMES_AKINATOR_ANSWER_PROB_NO'))
 				.replace('4', t('MINIGAMES_AKINATOR_ANSWER_IDK'));
-			const _option = new SelectMenuOption().setEmoji({ name: String(emojis[i]) }).setLabel(texto).setValue(String(i));
+
+			const _option = new SelectMenuOption()
+				.setEmoji({ name: String(emojis[i]) })
+				.setLabel(texto)
+				.setValue(String(i));
 			_menu.addOptions(_option);
 		});
 
@@ -65,7 +68,8 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 
 		componentes.addComponents(_menu);
 
-		const mensagemPartida = await interaction.editReply({ content: `${interaction.user}`, embeds: [embed], components: [componentes] }) as Message;
+		const mensagemPartida = (await interaction.editReply({ content: `${interaction.user}`, embeds: [embed], components: [componentes] })) as Message;
+
 		const collector = mensagemPartida.createMessageComponentCollector({
 			filter: int => {
 				if (interaction.user.id === int.user.id) return true;
@@ -95,7 +99,7 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 				return aki.win();
 			}
 
-			await aki.step(opcao as 1 | 2| 3| 4);
+			await aki.step(opcao as 1 | 2 | 3 | 4);
 
 			// If the user is next to a answer
 			if (aki.progress >= 70 || aki.currentStep >= 78) {
@@ -118,27 +122,27 @@ export default class MinigameAkinatorCommand extends SubCommandSwitcher {
 				embed.setImage(advinhado.nsfw ? null : advinhado.absolute_picture_path);
 
 				const _rowFinalizado = new ActionRow();
-				const _simBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Success).setCustomId('sim')
-					.setEmoji({ name: '✅' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_YES'));
-				const _naoBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Danger).setCustomId('nao')
-					.setEmoji({ name: '❌' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_NO'));
+				const _simBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Success).setCustomId('sim').setEmoji({ name: '✅' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_YES'));
+				const _naoBotao: ButtonComponent = new ButtonComponent().setStyle(ButtonStyle.Danger).setCustomId('nao').setEmoji({ name: '❌' }).setLabel(t('MINIGAMES_AKINATOR_ANSWER_NO'));
 
-				_rowFinalizado.setComponents([ _simBotao, _naoBotao ]);
+				_rowFinalizado.setComponents([_simBotao, _naoBotao]);
 
 				return interaction.editReply({ content: `${interaction.user}`, embeds: [embed], components: [_rowFinalizado] }).then((int: Message) => {
-					const filter = (filtint: MessageComponentInteraction | SelectMenuInteraction) => ['sim', 'nao'].includes(filtint.customId) && interaction.user.id === filtint.user.id;
-
-					int.awaitMessageComponent({ filter, time: 45000 }).then(async resposta => {
-						await resposta.deferUpdate();
-						if (resposta.customId === 'sim') {
-							embed.setColor(1299504);
-							resposta.editReply({ content: `🎉 ${interaction.user} **|** ${t('MINIGAMES_AKINATOR_SUCCESS')}`, embeds: [embed], components: [] });
-						} else {
-							embed.setColor(14407717);
-							resposta.editReply({ content: `😐 ${interaction.user} **|** ${t('MINIGAMES_AKINATOR_COULDNOT_GUESS')}`, embeds: [embed], components: [] });
-						}
-					// eslint-disable-next-line no-empty-function
-					}).catch(() => interaction.editReply({ content: `${interaction.user}`, embeds: [embed], components: [] }).catch(() => {}));
+					int.awaitMessageComponent({
+						filter: filtint => ['sim', 'nao'].includes(filtint.customId) && interaction.user.id === filtint.user.id,
+						time: 45000,
+					})
+						.then(async resposta => {
+							await resposta.deferUpdate();
+							if (resposta.customId === 'sim') {
+								embed.setColor(1299504);
+								resposta.editReply({ content: `🎉 ${interaction.user} **|** ${t('MINIGAMES_AKINATOR_SUCCESS')}`, embeds: [embed], components: [] });
+							} else {
+								embed.setColor(14407717);
+								resposta.editReply({ content: `😐 ${interaction.user} **|** ${t('MINIGAMES_AKINATOR_COULDNOT_GUESS')}`, embeds: [embed], components: [] });
+							}
+						})
+						.catch(() => interaction.editReply({ content: `${interaction.user}`, embeds: [embed], components: [] }).catch(o_O));
 				});
 			}
 

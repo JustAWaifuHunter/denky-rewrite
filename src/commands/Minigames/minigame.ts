@@ -21,10 +21,7 @@ export default class MinigameCommand extends CommandStructure {
 	public override async run({ interaction }: CommandRunData) {
 		new SubCommandInterpreter(interaction).run({
 			type: 'common',
-			switchs: [
-				await import('./SubCommands/quiz'),
-				await import('./SubCommands/akinator'),
-			],
+			switchs: [await import('./SubCommands/quiz'), await import('./SubCommands/akinator')],
 		});
 	}
 }

@@ -20,10 +20,7 @@ export default class PingCommand extends CommandStructure {
 	public override async run({ interaction }: CommandRunData) {
 		new SubCommandInterpreter(interaction).run({
 			type: 'common',
-			switchs: [
-				await import('./SubCommands/clapify'),
-				await import('./SubCommands/emojify'),
-			],
+			switchs: [await import('./SubCommands/clapify'), await import('./SubCommands/emojify'), await import('./SubCommands/invert'), await import('./SubCommands/vaporwave')],
 		});
 	}
 }

@@ -1,5 +1,6 @@
 export default class ReadyEvent extends null {
 	static run() {
-		console.log(`${client.user.tag} online!`);
+		if (!global.IS_MAIN_PROCESS) return;
+		console.log(`${client.user.tag} connected successfully!`);
 	}
 }

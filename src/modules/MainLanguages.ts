@@ -6,7 +6,7 @@ import { data as descriptions_en_US } from '../assets/languages/descriptions/en_
 import { data as descriptions_pt_BR } from '../assets/languages/descriptions/pt_BR';
 import Languages from './languages/Languages';
 
-interface LangExtender <T> {
+interface LangExtender<T> {
 	pt_BR: T;
 	en_US: T;
 	t: (string: keyof T, lang: 'pt_BR' | 'en_US', ...args: string[]) => string;
@@ -26,23 +26,26 @@ export default class LanguageModule {
 	}
 
 	init() {
-		this.commands = new Languages([
-			['pt_BR', commands_pt_BR],
-			['en_US', commands_en_US],
-		],
-		'pt_BR',
+		this.commands = new Languages(
+			[
+				['pt_BR', commands_pt_BR],
+				['en_US', commands_en_US],
+			],
+			'pt_BR',
 		) as Languages<'pt_BR', Commands> & LangExtender<Commands>;
-		this.descriptions = new Languages([
-			['pt_BR', descriptions_pt_BR],
-			['en_US', descriptions_en_US],
-		],
-		'pt_BR',
+		this.descriptions = new Languages(
+			[
+				['pt_BR', descriptions_pt_BR],
+				['en_US', descriptions_en_US],
+			],
+			'pt_BR',
 		) as Languages<'pt_BR', Descriptions> & LangExtender<Descriptions>;
-		this.categories = new Languages([
-			['pt_BR', categories_pt_BR],
-			['en_US', categories_en_US],
-		],
-		'pt_BR',
+		this.categories = new Languages(
+			[
+				['pt_BR', categories_pt_BR],
+				['en_US', categories_en_US],
+			],
+			'pt_BR',
 		) as Languages<'pt_BR', Categories> & LangExtender<Categories>;
 	}
 }

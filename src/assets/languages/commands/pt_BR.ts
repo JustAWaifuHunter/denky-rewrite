@@ -40,6 +40,41 @@ const data = {
 	MINIGAMES_AKINATOR_POSITION: 'Posição',
 	MINIGAMES_AKINATOR_SUCCESS: 'Consegui advinhar novamente! Que tal outra partida?',
 	MINIGAMES_AKINATOR_COULDNOT_GUESS: 'Não consegui advinhar. Que tal outra partida?',
+
+	// AFK
+	UTILS_AFK_ENABLED(u: User) {
+		return `✅ ${u} **|** Agora você está ausente.`;
+	},
+	UTILS_AFK_ALREADY_SET(u: User) {
+		return `❌ ${u} **|** Você já está ausente.`;
+	},
+	UTILS_AFK_NOT_AFK(u: User) {
+		return `❌ ${u} **|** Você não está ausente.`;
+	},
+	UTILS_AFK_REMOVED(u: User) {
+		return `✅ ${u} **|** Você não está mais ausente.`;
+	},
+	UTILS_AFK_AUTOREMOVED(u: User, time: number) {
+		return `👋 ${u} **|** Bem-vindo novamente, seu AFK foi removido.\n⏰ **|** Você ficou ausente <t:${time}:R>`;
+	},
+	UTILS_AFK_MENTIONED_AFK(u: User, time: number, reason?: string) {
+		return `${u} ficou ausente <t:${time}:R>.\n_\`${reason ?? 'Sem motivo informado.'}\`_`;
+	},
+
+	// Mutes
+	MOD_MUTE_NO_MEMBER: 'Não é possível silenciar o usuário pois ele não está no servidor.',
+	MOD_MUTE_OWNER: 'Você não pode silenciar o dono do servidor.',
+	MOD_MUTE_SELF: 'Você não pode se silenciar.',
+	MOD_MUTE_SELF_CLIENT: 'Eu não posso me silenciar.',
+	MOD_MUTE_INVALID_DURATION: `Não foi possível silenciar o usuário, possivelmente:
+- **Sua resposta não é um horário válido**;
+- **O tempo inserido é maior que 1 ano**;
+- **O tempo inserido é menor que 30 segundos**;
+- **A data inserida já está no passado**.`,
+	MOD_MUTE_SUCCESS: 'Usuário silenciado com sucesso.',
+	MOD_MUTE_FAIL: 'Não foi possível silenciar o usuário.',
+	MOD_CANNOT_PUNISH_ROLES_HIGH: 'Não posso punir este usuário, pois meu maior cargo está abaixo ou na mesma posição do maior cargo do membro.',
+	MOD_CANNOT_PUNISH_ROLES_LOW: 'Você não pode punir este usuário, pois seu maior cargo está abaixo ou na mesma posição do maior cargo do membro.',
 };
 
 export { data };
