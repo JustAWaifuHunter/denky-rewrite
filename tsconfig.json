@@ -29,7 +29,7 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "sourceMap": false,
-        "target": "ES2022",
+        "target": "ES2021",
         "useDefineForClassFields": false,
         "useUnknownInCatchVariables": true
     },
