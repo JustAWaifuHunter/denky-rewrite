@@ -35,7 +35,7 @@ class SubCommandInterpreter {
 		const cacheName = `${this.command.commandName} ${options.type === 'group' ? this.command.options.getSubcommandGroup() : ''} ${subCommandName}`;
 
 		if (Switcher) {
-			const subCommand: SubCommandSwitcher = subCommandCache.get(cacheName) ?? (('default' in Switcher ? new Switcher.default() : Switcher));
+			const subCommand: SubCommandSwitcher = subCommandCache.get(cacheName) ?? ('default' in Switcher ? new Switcher.default() : Switcher);
 
 			subCommand.run({ interaction: this.command, t: translate });
 

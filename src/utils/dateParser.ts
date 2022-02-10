@@ -9,11 +9,7 @@ dayjs.extend(utcPlugin);
 dayjs.extend(timezonePlugin);
 dayjs.extend(customParseFormatPlugin);
 
-const formats: string[] = [
-	'DD-MM-YYYY', 'DD/MM/YYYY', 'DD.MM.YYYY',
-	'DD-MM-YYYY HH:mm', 'DD/MM/YYYY HH:mm', 'DD.MM.YYYY HH:mm',
-	'HH:mm',
-];
+const formats: string[] = ['DD-MM-YYYY', 'DD/MM/YYYY', 'DD.MM.YYYY', 'DD-MM-YYYY HH:mm', 'DD/MM/YYYY HH:mm', 'DD.MM.YYYY HH:mm', 'HH:mm'];
 
 export default class dateParser extends null {
 	static parse(rawDate: Date | string): number {
