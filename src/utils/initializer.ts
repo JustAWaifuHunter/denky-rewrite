@@ -1,5 +1,8 @@
 /* eslint-disable no-await-in-loop */
+import { existsSync } from 'fs';
 import { readdir } from 'fs/promises';
+import type { CommandStructure } from './baseCommand';
+import type { SubCommandSwitcher } from './subCommandInterpreter';
 
 class Initializer {
 	constructor() {
@@ -17,15 +20,33 @@ class Initializer {
 		client.commands = new Map();
 		client.subCommands = new Map();
 		const categories = await readdir('./commands/');
+
 		for (const category of categories) {
 			const commands = await readdir(`./commands/${category}`);
+
 			for (const command of commands) {
 				if (!command.endsWith('.js')) continue;
+
 				const { default: BaseCommand } = await import(`../commands/${category}/${command}`);
-				const Command = new BaseCommand();
+				const Command = new BaseCommand() as CommandStructure;
 				client.commands.set(Command.name, Command);
 				if (global.IS_MAIN_PROCESS) {
 					console.log(`[DENKY] Loaded command: ${Command.name}`);
+				}
+			}
+
+			if (existsSync(`./commands/${category}/SubCommands`)) {
+				const subCommands = await readdir(`./commands/${category}/SubCommands`);
+
+				for (const subCommand of subCommands) {
+					if (!subCommand.endsWith('.js')) continue;
+
+					const { default: BaseSubCommand } = await import(`../commands/${category}/SubCommands/${subCommand}`);
+					const SubCommand = new BaseSubCommand() as SubCommandSwitcher;
+					client.subCommands.set(SubCommand.name, SubCommand);
+					if (global.IS_MAIN_PROCESS) {
+						console.log(`[DENKY] Loaded sub command of ${SubCommand.parent}: ${SubCommand.name}`);
+					}
 				}
 			}
 		}

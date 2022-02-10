@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import env from 'dotenv';
+import { join } from 'path';
 import type { DenkyClient } from './index.d';
 import { Initializer } from './utils/initializer';
 
@@ -21,6 +22,10 @@ global.client = client;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 global.o_O = (..._args: any) => undefined;
+
+global._load = (path: string) => {
+	return require(join(process.cwd(), '..', path));
+};
 
 client.login(process.env.BOT_TOKEN);
 

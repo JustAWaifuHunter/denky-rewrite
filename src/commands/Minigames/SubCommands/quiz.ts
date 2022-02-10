@@ -2,9 +2,9 @@ import { ActionRow, ButtonComponent, ButtonStyle, Embed, Message } from 'discord
 import type { CommandRunData } from '../../../utils/baseCommand';
 import { SubCommandSwitcher } from '../../../utils/subCommandInterpreter';
 // Quiz data
-import AstronomyData from '../../../assets/quiz/astronomy.json';
-import GeographyData from '../../../assets/quiz/geography.json';
-import TechData from '../../../assets/quiz/tech.json';
+const AstronomyData = _load('./src/assets/quiz/astronomy.json');
+const GeographyData = _load('./src/assets/quiz/geography.json');
+const TechData = _load('./src/assets/quiz/tech.json');
 
 type ValidCategories = 'technology' | 'astronomy' | 'geography' | 'random';
 const categories: ValidCategories[] = ['technology', 'astronomy', 'geography', 'random'];
